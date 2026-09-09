@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SAT Practice Tests — Demo</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#f2f8fc;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+body{min-height:100vh}.page{padding:55px 20px 55px}h1{font-size:32px;margin:0 0 28px;font-weight:800}
+.cards{display:flex;gap:25px;overflow-x:auto;padding-bottom:12px}.card{flex:0 0 360px;background:#fff;border:1px solid #ddd;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px #0002}
+.head{background:#064a70;color:#fff;padding:22px 22px 0}.sat{font-size:34px;font-weight:800}.band{background:#086da7;margin:18px -22px 0;padding:13px 16px;display:flex;justify-content:space-between;font-weight:800;gap:10px}.date{white-space:nowrap;font-size:13px}
+.score{text-align:center;background:#edf4f8;padding:30px 15px}.label{font-weight:800;font-size:15px}.total{font-size:62px;font-weight:800;margin:15px 0}.range{font-size:14px;color:#555}
+.body{padding:22px}.row{border-bottom:1px solid #ddd;padding:0 0 15px;margin-bottom:15px;position:relative}.subject{font-weight:700;font-size:18px}.subrange{font-size:14px;margin-top:5px}.subscore{position:absolute;right:0;bottom:15px;font-size:25px;font-weight:800}
+button{width:100%;height:50px;border-radius:25px;border:2px solid #111;background:#ffd600;font-size:16px;font-weight:700;margin-top:8px;cursor:pointer}.white{background:white}.tailored{text-align:center;margin-top:25px;text-decoration:underline;font-weight:650}
+.demo{text-align:center;color:#55718a;font-size:12px;margin-top:40px}
+.modal{display:none;position:fixed;inset:0;background:#f2f8fc;z-index:10;overflow:auto}.modal.show{display:block}.detail{max-width:760px;margin:auto;padding:24px 22px 60px}
+.back{background:none;border:0;width:auto;height:auto;margin:0 0 18px;padding:0;font-size:17px;text-decoration:none}.detail h2{font-size:29px;margin:4px 0 5px}.detail .subtitle{color:#667085;margin-bottom:22px}
+.tabs{display:flex;gap:7px;overflow:auto;border-bottom:1px solid #ddd;margin-bottom:28px}.tab{width:auto;white-space:nowrap;border:0;background:none;border-radius:0;height:43px;padding:0 13px;font-size:14px}.tab.active{font-weight:800;border-bottom:3px solid #086da7}
+h3{font-size:23px;margin:25px 0 8px}.intro{color:#667085;margin-bottom:24px}.section-title{font-size:19px;font-weight:800;margin:24px 0 15px}
+.domain{background:#fff;border:1px solid #ddd;border-radius:12px;padding:16px 17px;margin:10px 0}.domain-name{font-weight:750;font-size:16px}.domain-meta{color:#667085;font-size:13px;margin:5px 0 13px}.bar{height:9px;background:#e4e7eb;border-radius:9px;overflow:hidden}.fill{height:100%;background:#086da7;border-radius:9px}.outcome{font-size:14px;font-weight:700;margin-top:8px}
+.overview{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#fff;border:1px solid #ddd;border-radius:12px;padding:16px}.stat b{font-size:25px;display:block}.stat span{font-size:13px;color:#667085}
+.note{background:#eaf3f9;border:1px solid #c8dce9;border-radius:10px;padding:13px;margin-top:22px;font-size:13px;color:#45657b}
+@media(max-width:480px){.overview{grid-template-columns:1fr 1fr}.overview .stat:last-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<main class="page">
+<h1>SAT Practice Tests</h1>
+<div class="cards">
+<section class="card">
+<div class="head"><div class="sat">SAT</div><div class="band"><span>PRACTICE 7</span><span class="date">June 5, 2026</span></div></div>
+<div class="score"><div class="label">TOTAL SCORE</div><div class="total">1160</div><div class="range">400-1600</div></div>
+<div class="body"><div class="row"><div class="subject">Reading and Writing</div><div class="subrange">200-800</div><div class="subscore">570</div></div><div class="row"><div class="subject">Math</div><div class="subrange">200-800</div><div class="subscore">590</div></div><button>Score Details</button><button class="white">Practice on Khan Academy ↗</button><div class="tailored">☷ &nbsp; Get Tailored Practice</div></div>
+</section>
 
+<section class="card">
+<div class="head"><div class="sat">SAT</div><div class="band"><span>PRACTICE 4</span><span class="date">July 24, 2025</span></div></div>
+<div class="score"><div class="label">TOTAL SCORE</div><div class="total">1200</div><div class="range">400-1600</div></div>
+<div class="body"><div class="row"><div class="subject">Reading and Writing</div><div class="subrange">200-800</div><div class="subscore">590</div></div><div class="row"><div class="subject">Math</div><div class="subrange">200-800</div><div class="subscore">610</div></div><button onclick="openDetails()">Score Details</button><button class="white">Practice on Khan Academy ↗</button><div class="tailored">☷ &nbsp; Get Tailored Practice</div></div>
+</section>
+</div>
+<div class="demo">⚠ DEMO — NOT AN OFFICIAL COLLEGE BOARD PAGE</div>
+</main>
+
+<div class="modal" id="details">
+<div class="detail">
+<button class="back" onclick="closeDetails()">← Back to My Tests</button>
+<h2>Score Details</h2>
+<div class="subtitle">SAT Practice 4 - July 24, 2025</div>
+<div class="tabs"><button class="tab active">My Tests</button><button class="tab">All Questions</button><button class="tab">Reading and Writing</button><button class="tab">Math</button></div>
+
+<h3>Knowledge and Skills</h3>
+<div class="intro">View your performance across the 8 content domains measured on the SAT.</div>
+
+<div class="section-title">Reading and Writing</div>
+
+<div class="domain">
+    <div class="domain-name">Information and Ideas</div>
+    <div class="domain-meta">(26% of test section, 12 - 14 questions)</div>
+    <div class="bar"><div class="fill" style="width:71%"></div></div>
+    <div class="outcome">5 out of 7</div>
+</div>
+
+<div class="domain">
+    <div class="domain-name">Expression of Ideas</div>
+    <div class="domain-meta">(20% of test section, 8 - 12 questions)</div>
+    <div class="bar"><div class="fill" style="width:71%"></div></div>
+    <div class="outcome">5 out of 7</div>
+</div>
+
+<div class="domain">
+    <div class="domain-name">Craft and Structure</div>
+    <div class="domain-meta">(28% of test section, 13 - 15 questions)</div>
+    <div class="bar"><div class="fill" style="width:57%"></div></div>
+    <div class="outcome">4 out of 7</div>
+</div>
+
+<div class="domain">
+    <div class="domain-name">Standard English Conventions</div>
+    <div class="domain-meta">(26% of test section, 11 - 15 questions)</div>
+    <div class="bar"><div class="fill" style="width:57%"></div></div>
+    <div class="outcome">4 out of 7</div>
+</div>
+
+<div class="section-title">Math</div>
+
+<div class="domain">
+    <div class="domain-name">Algebra</div>
+    <div class="domain-meta">(35% of test section, 13 - 15 questions)</div>
+    <div class="bar"><div class="fill" style="width:71%"></div></div>
+    <div class="outcome">5 out of 7</div>
+</div>
+
+<div class="domain">
+    <div class="domain-name">Advanced Math</div>
+    <div class="domain-meta">(35% of test section, 13 - 15 questions)</div>
+    <div class="bar"><div class="fill" style="width:71%"></div></div>
+    <div class="outcome">5 out of 7</div>
+</div>
+
+<div class="domain">
+    <div class="domain-name">Problem-Solving and Data Analysis</div>
+    <div class="domain-meta">(15% of test section, 5 - 7 questions)</div>
+    <div class="bar"><div class="fill" style="width:57%"></div></div>
+    <div class="outcome">4 out of 7</div>
+</div>
+
+<div class="domain">
+    <div class="domain-name">Geometry and Trigonometry</div>
+    <div class="domain-meta">(15% of test section, 5 - 7 questions)</div>
+    <div class="bar"><div class="fill" style="width:57%"></div></div>
+    <div class="outcome">4 out of 7</div>
+</div>
+
+<h3>Questions Overview</h3>
+<div class="intro">Review your results for each question from this practice test.</div>
+<div class="overview">
+    <div class="stat"><b>98</b><span>Total Questions</span></div>
+    <div class="stat"><b>66</b><span>Correct Answers</span></div>
+    <div class="stat"><b>32</b><span>Incorrect Answers</span></div>
+</div>
+<div class="note">Demo score details: the question/domain results above are illustrative values designed to accompany the 1200 practice score (590 Reading and Writing, 610 Math). They are not calculated or reported by College Board.</div>
+</div>
+</div>
+
+<script>
+function openDetails(){document.getElementById('details').classList.add('show');document.body.style.overflow='hidden';}
+function closeDetails(){document.getElementById('details').classList.remove('close');document.getElementById('details').classList.remove('show');document.body.style.overflow='';}
+</script>
+</body>
+</html>
